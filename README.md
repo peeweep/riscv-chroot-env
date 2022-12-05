@@ -8,10 +8,12 @@ If possible, it will create a BtrFS subvolume as the chroot rootfs, and disable 
 * qemu-user binary (static linked)
   ```bash
   # can be installed on gentoo linux by:
-  echo "app-emulation/qemu static-user QEMU_USER_TARGETS: riscv32 riscv64" >>/etc/portage/package.use/qemu
-  emerge -vj app-emulation/qemu --autounmask # may need to do something more by yourself here
+  echo "app-emulation/qemu static-user" >>/etc/portage/package.use/qemu
+  echo 'QEMU_USER_TARGETS="${QEMU_USER_TARGETS} riscv32 riscv64"' >> /etc/portage/make.conf
+  echo 'QEMU_SOFTMMU_TARGETS="${QEMU_SOFTMMU_TARGETS} riscv32 riscv64"' >> /etc/portage/make.conf
+  emerge -avj app-emulation/qemu --autounmask # may need to do something more by yourself here
   ```
-* [Register binary format handlers](https://wiki.gentoo.org/wiki/Embedded_Handbook/General/Compiling_with_qemu_user_chroot#Register_binary_format_handlers)
+* [Register binary format handlers](https://wiki.gentoo.org/wiki/Embedded_Handbook/General/Compiling_with_qemu_user_chroot#Register_binary_format_handlers), use `qemu-riscv64` as register is better.
 
 #### init
 

@@ -36,6 +36,7 @@ bwrap \
 --bind ${rootfs} / \
 --bind /var/cache/distfiles /var/cache/distfiles \
 --ro-bind /etc/resolv.conf /etc/resolv.conf \
+--ro-bind /usr/bin/qemu-riscv64 /usr/bin/qemu-riscv64 \
 --ro-bind /var/db/repos/gentoo /var/db/repos/gentoo \
 --dev /dev \
 --proc /proc \
