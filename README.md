@@ -14,6 +14,10 @@ If possible, it will create a BtrFS subvolume as the chroot rootfs, and disable 
   emerge -avj app-emulation/qemu --autounmask # may need to do something more by yourself here
   ```
 * [Register binary format handlers](https://wiki.gentoo.org/wiki/Embedded_Handbook/General/Compiling_with_qemu_user_chroot#Register_binary_format_handlers), use `qemu-riscv64` as register is better.
+  ```
+  echo ':qemu-riscv64:M::\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xf3\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-riscv64:' > /etc/binfmt.d/qemu.conf
+  systemctl restart systemd-binfmt
+  ```
 
 #### init
 
