@@ -37,11 +37,10 @@ bwrap \
 --bind /var/cache/distfiles /var/cache/distfiles \
 --ro-bind /etc/resolv.conf /etc/resolv.conf \
 --ro-bind /usr/bin/qemu-riscv64 /usr/bin/qemu-riscv64 \
---ro-bind /var/db/repos/gentoo /var/db/repos/gentoo \
 --dev /dev \
 --proc /proc \
 --tmpfs /run \
---perms 1777 --tmpfs /dev/shm \
+--tmpfs /dev/shm \
 --unshare-uts --hostname rv-qemuu-${hostname_suffix} \
 "${@}" \
 /bin/bash --login
